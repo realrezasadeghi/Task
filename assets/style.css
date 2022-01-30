@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+body {
+  font-family: 'Prompt', sans-serif;
+  background-color: rgb(231, 231, 231);
+  padding: 10px;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.auto-complete {
+  max-width: 400px;
+  position: relative;
+}
+.title-auto-complete {
+  display: block;
+  color: rgb(6, 6, 116);
+  text-align: center;
+}
+.search-auto-complete {
+  padding: 15px;
+  border-radius: 3px;
+  border: none;
+  display: block;
+  width: 400px;
+}
+.search-auto-complete:focus {
+  outline: none;
+}
+.list-auto-complete {
+  list-style-type: none;
+  text-align: left;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  width: 100%;
+  padding: 15px;
+}
+
+.item-auto-complete {
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 10px;
+}
+.item-auto-complete:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.show-info {
+  width: 100%;
+  text-align: left;
+}
+.active{
+  background-color: rgba(0, 0, 0, 0.06);
+}
