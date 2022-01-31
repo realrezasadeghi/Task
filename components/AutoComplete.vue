@@ -7,7 +7,7 @@
       type="text"
       class="search-auto-complete"
       name="search"
-      @input.prevent="searchAutoComplete($event)"
+      @keyup.prevent="searchAutoComplete"
       @keyup.down="onArrowDown"
       @keyup.up="onArrowUp"
       @keypress.enter="onEnter"
@@ -43,6 +43,8 @@ export default {
       isShowListAutoComplete: false,
       appId: 'c983d82f65c624bedf1c75daf764138c',
       arrowCounter: -1,
+      timer: null,
+      waitTime: 1000,
     }
   },
   watch: {
@@ -59,11 +61,17 @@ export default {
         data.toLowerCase().includes(this.search.toLowerCase())
       )
     },
-    searchAutoComplete(event) {
-      this.isShowListAutoComplete = true
+    searchAutoComplete() {      
       this.filterAutoComplete()
-      // const times = []
-      // const time = Date.now()
+      if (this.listResult.length===0) {
+        this.isShowListAutoComplete = true
+      }else{
+        this.isShowListAutoComplete = false
+      }
+      clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.getInfoCity()
+      }, this.waitTime)
     },
     selectAutoComplete(item) {
       this.search = item
